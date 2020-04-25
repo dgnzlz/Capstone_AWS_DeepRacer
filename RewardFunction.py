@@ -16,10 +16,7 @@ def reward_function(params):
     # the agent is somewhere in between the track borders
     if speed < SPEED_THRESHOLD:
     # Penalize if the car goes too slow
-        reward = reward - 1.0
-    else:
-    # High reward if the car stays on track and goes fast
-        reward = reward + 2.0
+        reward *= 0.5
     
     #Incentive for finishing the lap
     if progress == 100:
