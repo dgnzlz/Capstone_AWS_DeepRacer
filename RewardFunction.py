@@ -16,7 +16,7 @@ def reward_function(params):
     
     #Incentive for finishing the lap
     if progress == 100:
-        reward = reward + 100
+        reward = reward + 200
 
     # Always return a float value
     return float(reward)
