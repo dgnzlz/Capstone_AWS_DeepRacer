@@ -8,7 +8,7 @@ def reward_function(params):
     speed = params['speed']
     SPEED_THRESHOLD = 1.0
     
-    # Give a very low reward by default
+    # Define the default reward
     reward = 1.0
 
     # Give a high reward if no wheels go off the track, 
