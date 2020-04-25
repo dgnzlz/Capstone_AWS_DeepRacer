@@ -9,7 +9,7 @@ def reward_function(params):
     SPEED_THRESHOLD = 1.0
     
     # Give a very low reward by default
-    reward = 1e-3
+    reward = 1.0
 
     # Give a high reward if no wheels go off the track, 
     #the speed is higher than 1.0 and
@@ -18,7 +18,7 @@ def reward_function(params):
         reward = reward - 1.0
     elif speed < SPEED_THRESHOLD:
     # Penalize if the car goes too slow
-        reward = reward - 2.0
+        reward = reward - 1.0
     else:
     # High reward if the car stays on track and goes fast
         reward = reward + 2.0
