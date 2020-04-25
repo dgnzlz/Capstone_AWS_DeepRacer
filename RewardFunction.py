@@ -14,9 +14,7 @@ def reward_function(params):
     # Give a high reward if no wheels go off the track, 
     #the speed is higher than 1.0 and
     # the agent is somewhere in between the track borders
-    if not all_wheels_on_track and (0.5*track_width - distance_from_center) >= 0.05:
-        reward = reward - 1.0
-    elif speed < SPEED_THRESHOLD:
+    if speed < SPEED_THRESHOLD:
     # Penalize if the car goes too slow
         reward = reward - 1.0
     else:
@@ -27,5 +25,8 @@ def reward_function(params):
     if progress == 100:
         reward = reward + 100
 
+    if not all_wheels_on_track or (0.5*track_width - distance_from_center) < 0.05:
+        reward = 1e-3
+        
     # Always return a float value
     return float(reward)
