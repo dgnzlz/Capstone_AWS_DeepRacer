@@ -1,10 +1,19 @@
 def reward_function(params):
     
-    # Read input parameters
+    # Read all input parameters
     all_wheels_on_track = params['all_wheels_on_track']
+    x = params['x']
+    y = params['y']
     distance_from_center = params['distance_from_center']
+    is_left_of_center = params['is_left_of_center']
+    heading = params['heading']
+    progress = params['progress']
+    steps = params['steps']
+    speed = params['speed']
+    steering_angle = params['steering_angle']
     track_width = params['track_width']
-    progress=params['progress']
+    waypoints = params['waypoints']
+    closest_waypoints = params['closest_waypoints']
     
     # Give a very low reward by default
     reward = 1e-3
