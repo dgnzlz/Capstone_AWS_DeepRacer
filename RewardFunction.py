@@ -6,17 +6,14 @@ def reward_function(params):
     track_width = params['track_width']
     progress=params['progress']
     speed = params['speed']
-    SPEED_THRESHOLD = 1.0
     
     # Define the default reward
     reward = 1.0
-
-    # Give a high reward if no wheels go off the track, 
-    #the speed is higher than 1.0 and
-    # the agent is somewhere in between the track borders
-    if speed < SPEED_THRESHOLD:
     # Penalize if the car goes too slow
+    if speed < 1:
         reward *= 0.5
+    elif speed < 1.5:
+        reward *= 0.9
     
     #Incentive for finishing the lap
     if progress == 100:
