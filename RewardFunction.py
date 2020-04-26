@@ -2,10 +2,18 @@ def reward_function(params):
     
     # Read input parameters
     all_wheels_on_track = params['all_wheels_on_track']
+    x = params['x']
+    y = params['y']
     distance_from_center = params['distance_from_center']
-    track_width = params['track_width']
-    progress=params['progress']
+    is_left_of_center = params['is_left_of_center']
+    heading = params['heading']
+    progress = params['progress']
+    steps = params['steps']
     speed = params['speed']
+    steering_angle = params['steering_angle']
+    track_width = params['track_width']
+    waypoints = params['waypoints']
+    closest_waypoints = params['closest_waypoints']
     
     # Define the default reward
     reward = 1.0
@@ -14,10 +22,17 @@ def reward_function(params):
         reward *= 0.5
     elif speed < 1.5:
         reward *= 0.9
+        
+    REALISTIC_NUMB_STEPS = 400
+    SPLIT_TRACK_N_PARTS = 20
+    for i in range(100, REALISTIC_NUMB_STEPS+100, 10):
+        check_after_n_steps = int(i / SPLIT_TRACK_N_PARTS)
+        if (steps % check_after_n_steps) == 0 and progress > (steps / i) * 100:
+            reward += 1
     
     #Incentive for finishing the lap
     if progress == 100:
-        reward = reward + 100
+        reward += 100
 
     if not all_wheels_on_track or (0.5*track_width - distance_from_center) < 0.05:
         reward = 1e-3
