@@ -39,7 +39,7 @@ def reward_function(params):
         # Total reward for one entire lap from the steps-for-loop: (500 - steps) / 10 * 20
         finish_multiple = 1.0 # Defines how much of the steps-for-loop should be given for finishing the lap
         # Always give 100 reward, but more if reward from step-for-loop is higher
-        reward += max(100, (SLOWEST_STEPS-steps)/10*20*finish_multiple)
+        reward += max(100, (SLOWEST_STEPS-steps)/10*SPLIT_TRACK_N_PARTS*finish_multiple)
 
     ## Zero reward if off track ##
     if not all_wheels_on_track or (0.5*track_width - distance_from_center) < 0.05:
