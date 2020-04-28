@@ -2,8 +2,8 @@ def reward_function(params):
     
     # Import package (needed for heading)
     import math
-    
-    ## Read input parameters ##
+
+    # Read all input parameters
     all_wheels_on_track = params['all_wheels_on_track']
     x = params['x']
     y = params['y']
