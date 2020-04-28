@@ -1,5 +1,8 @@
 def reward_function(params):
     
+    # Import package (needed for heading)
+    import math
+    
     ## Read input parameters ##
     all_wheels_on_track = params['all_wheels_on_track']
     x = params['x']
@@ -22,6 +25,26 @@ def reward_function(params):
     if speed < 1:
         reward *= 0.5
     elif speed < 1.5:
+        reward *= 0.9
+    
+    ## Penalize if heading of car is too far off next waypoint (relative penalization) ##
+    # Calculate the direction of the center line based on the closest waypoints
+    next_point = waypoints[closest_waypoints[1]]
+    prev_point = waypoints[closest_waypoints[0]]
+    # Calculate the direction in radius, arctan2(dy, dx), the result is (-pi, pi) in radians
+    track_direction = math.atan2(next_point[1] - prev_point[1], next_point[0] - prev_point[0]) 
+    # Convert to degree
+    track_direction = math.degrees(track_direction)
+    # Calculate the difference between the track direction and the heading direction of the car
+    direction_diff = abs(track_direction - heading)
+    if direction_diff > 180:
+        direction_diff = 360 - direction_diff
+    # Penalize the reward if the difference is too large
+    if direction_diff > 30.0:
+        reward *= 0.1
+    elif direction_diff > 20.0:
+        reward *= 0.5
+    elif direction_diff > 10.0:
         reward *= 0.9
     
     ## Incentive for using less steps (absolute reward) ##
