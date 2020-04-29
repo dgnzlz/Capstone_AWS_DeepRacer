@@ -44,7 +44,7 @@ def reward_function(params):
         # Always give 100 reward, but more if reward from step-for-loop is higher
         reward += max(100, (SLOWEST_STEPS-steps)/10*SPLIT_TRACK_N_PARTS*finish_multiple)
 
-    ## Penalize if heading of car is too far off next waypoint (relative penalization) ##
+    ## Zero reward if heading of car is too far off next waypoint (obviously stupid decision) ##
     # Calculate the direction of the center line based on the closest waypoints
     next_point = waypoints[closest_waypoints[1]]
     prev_point = waypoints[closest_waypoints[0]]
