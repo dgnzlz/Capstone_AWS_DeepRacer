@@ -47,9 +47,6 @@ def reward_function(params):
         reward += max(100, (SLOWEST_STEPS-steps)/STEPS_INCREMENT*SPLIT_TRACK_N_PARTS*STEPS_REWARD*FINISH_MULTIPLE)
 
     ## Zero reward if heading of car is too far off next waypoint (obviously stupid decision) ##
-    ###################################################################
-    ## ONLY MAKES SENSE IN COMBINATION WITH "FOLLOW RACING LINE" ??? ##
-    ###################################################################
     # Calculate the direction of the center line based on the closest waypoints
     next_point = waypoints[closest_waypoints[1]]
     prev_point = waypoints[closest_waypoints[0]]
