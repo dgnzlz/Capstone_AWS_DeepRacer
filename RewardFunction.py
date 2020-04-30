@@ -31,10 +31,9 @@ def reward_function(params):
     
     ## Incentive for using less steps (absolute reward) ##
     ## Reminder: This
-    SLOWEST_STEPS = 500 # about 35 seconds
-    FASTEST_STEPS = 200 # about 13 seconds
+    SLOWEST_STEPS = 500 # about 35 seconds; start giving points if car is this fast
     SPLIT_TRACK_N_PARTS = 20
-    for i in range(SLOWEST_STEPS, FASTEST_STEPS, -10):
+    for i in range(SLOWEST_STEPS, 0, -10):
         check_after_n_steps = int(i / SPLIT_TRACK_N_PARTS)
         if (steps % check_after_n_steps) == 0 and progress > (steps / i) * 100:
             reward += 1
