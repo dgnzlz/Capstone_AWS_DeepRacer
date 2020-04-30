@@ -31,21 +31,25 @@ def reward_function(params):
     
     ## Incentive for using less steps (absolute reward) ##
     ## Reminder: This
-    SLOWEST_STEPS = 500 # about 35 seconds; start giving points if car is this fast
+    SLOWEST_STEPS = 500 # about 35 seconds; start giving additional reward if car is this fast
+    STEPS_INCREMENT = 10 # increase the reward if car reduces steps by 10
     SPLIT_TRACK_N_PARTS = 20
-    for i in range(SLOWEST_STEPS, 0, -10):
+    STEPS_REWARD = 1 # additional reward for each iteration in the for-loop
+    for i in range(SLOWEST_STEPS, 0, -STEPS_INCREMENT):
         check_after_n_steps = int(i / SPLIT_TRACK_N_PARTS)
         if (steps % check_after_n_steps) == 0 and progress > (steps / i) * 100:
-            reward += 1
+            reward += STEPS_REWARD
     
     ## Incentive for finishing the lap (absolute reward) ##
     if progress == 100:
-        # Total reward for one entire lap from the steps-for-loop: (500 - steps) / 10 * 20
-        finish_multiple = 1.0 # Defines how much of the steps-for-loop should be given for finishing the lap
+        FINISH_MULTIPLE = 1.0 # Defines how much of the steps-for-loop should be given for finishing the lap
         # Always give 100 reward, but more if reward from step-for-loop is higher
-        reward += max(100, (SLOWEST_STEPS-steps)/10*SPLIT_TRACK_N_PARTS*finish_multiple)
+        reward += max(100, (SLOWEST_STEPS-steps)/STEPS_INCREMENT*SPLIT_TRACK_N_PARTS*STEPS_REWARD*FINISH_MULTIPLE)
 
     ## Zero reward if heading of car is too far off next waypoint (obviously stupid decision) ##
+    ###################################################################
+    ## ONLY MAKES SENSE IN COMBINATION WITH "FOLLOW RACING LINE" ??? ##
+    ###################################################################
     # Calculate the direction of the center line based on the closest waypoints
     next_point = waypoints[closest_waypoints[1]]
     prev_point = waypoints[closest_waypoints[0]]
