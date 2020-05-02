@@ -23,11 +23,8 @@ def reward_function(params):
     
     ## Penalize if the car goes too slow (relative penalization) ##
     MAX_SPEED = 3
-    # SPEED_GRANULARITY = 3
-    if speed < MAX_SPEED/3 + 0.1:
-        reward *= 0.7
-    elif speed < MAX_SPEED/3*2 + 0.1:
-        reward *= 0.95
+    # This formula will linearly decrease the reward from 1 for max speed to 0 for no speed
+    reward *= (1.0 / MAX_SPEED) * speed
     
     ## Incentive for using less steps (absolute reward) ##
     SLOWEST_STEPS = 500 # about 35 seconds; start giving additional reward if car is this fast
