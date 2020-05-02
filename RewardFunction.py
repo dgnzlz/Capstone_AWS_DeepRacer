@@ -22,7 +22,7 @@ def reward_function(params):
     reward = 1.0
     
     ## Penalize if the car goes too slow (relative penalization) ##
-    MAX_SPEED = 3
+    MAX_SPEED = 4
     # This formula will linearly decrease the reward from 1 for max speed to 0 for no speed
     reward *= (1.0 / MAX_SPEED) * speed
     
