@@ -21,11 +21,6 @@ def reward_function(params):
     ## Define the default reward ##
     reward = 1.0
     
-    ## Penalize if the car goes too slow (relative penalization) ##
-    MAX_SPEED = 4
-    # This formula will linearly decrease the reward from 1 for max speed to 0 for no speed
-    reward *= (1.0 / MAX_SPEED) * speed
-    
     ## Incentive for using less steps (absolute reward) ##
     SLOWEST_STEPS = 500 # about 35 seconds; start giving additional reward if car is this fast
     STEPS_INCREMENT = 10 # increase the reward if car reduces steps by 10
@@ -57,6 +52,11 @@ def reward_function(params):
     # Penalize the reward if the difference is too large
     if direction_diff > 45.0:
         reward = 1e-3
+    
+    ## Penalize if the car goes too slow (relative penalization) ##
+    MAX_SPEED = 4
+    # This formula will linearly decrease the reward from 1 for max speed to 0 for no speed
+    reward *= (1.0 / MAX_SPEED) * speed
         
     ## Zero reward if off track ##
     if not all_wheels_on_track or (0.5*track_width - distance_from_center) < 0.05:
