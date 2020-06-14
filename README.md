@@ -11,3 +11,8 @@
 - To calculate the optimal racing line: https://github.com/cdthompson/deepracer-k1999-race-lines
 - To analyze the logs: https://github.com/aws-deepracer-community/deepracer-analysis
 - To retreive the track data: https://github.com/aws-deepracer-community/deepracer-simapp/tree/master/bundle/deepracer_simulation_environment/share/deepracer_simulation_environment/routes
+
+## License
+Feel free to use, distribute, and alter the code as you like.
+
+Small warning: This is a finished university project. Therefore, we will not be maintaining the code.
