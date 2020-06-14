@@ -1,4 +1,4 @@
-# Capstone Project for Master of Science in Business Analytics at ESADE Business School
+# Capstone Project for the Master of Science in Business Analytics at ESADE Business School
 
 **This repository contains the code that was used for the article "An Advanced Guide to AWS DeepRacer - Autonomous Formula 1 Racing using Reinforcement Learning"**
 
