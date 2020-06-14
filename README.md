@@ -15,4 +15,4 @@
 ## License
 Feel free to use, distribute, and alter the code as you like.
 
-This is a finished university project. Therefore, we will not be maintaining the code.
+This is a finished university project. Therefore, we will not be maintaining the code any more.
