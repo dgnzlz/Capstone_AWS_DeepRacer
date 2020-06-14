@@ -527,7 +527,7 @@ class Reward:
         return float(reward)
 
 
-reward_object = Reward() # add parameter verbose=True to get noisy output for testing in jupyter
+reward_object = Reward() # add parameter verbose=True to get noisy output for testing
 
 
 def reward_function(params):
