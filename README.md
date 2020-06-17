@@ -1,6 +1,6 @@
 # Capstone Project for the Master of Science in Business Analytics at ESADE Business School
 
-**This repository contains the code that was used for the article "An Advanced Guide to AWS DeepRacer - Autonomous Formula 1 Racing using Reinforcement Learning"**
+**This repository contains the code that was used for the article "An Advanced Guide to AWS DeepRacer - Autonomous Formula 1 Racing using Reinforcement Learning". Feel free to check it out [here](https://towardsdatascience.com/an-advanced-guide-to-aws-deepracer-2b462c37eea).**
 
 
 - The folder *Compute_Speed_And_Actions* contains a jupyter notebook, which takes the optimal racing line from [this](https://github.com/cdthompson/deepracer-k1999-race-lines) repo and computes the optimal speed. Additionally, it computes a custom action space with K-Means clustering
